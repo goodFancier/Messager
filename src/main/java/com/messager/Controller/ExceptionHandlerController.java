@@ -1,6 +1,6 @@
-package com.example.demo.Controller;
+package com.messager.Controller;
 
-import com.example.demo.Utils.RestException;
+import com.messager.Utils.RestException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

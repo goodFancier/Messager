@@ -1,7 +1,6 @@
-package com.example.demo.Service;
+package com.messager.Service;
 
-import com.example.demo.Entity.Data;
-import com.example.demo.Repository.DataRepository;
+import com.messager.Repository.DataRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Service("dataService")
 public class DataServiceImpl implements DataService {

@@ -1,4 +1,4 @@
-package com.example.demo.Utils;
+package com.messager.Utils;
 
 public class RestException extends Exception {
     public RestException() {

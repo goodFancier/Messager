@@ -1,6 +1,6 @@
-package com.example.demo.Repository;
+package com.messager.Repository;
 
-import com.example.demo.Entity.DomainObject;
+import com.messager.Entity.DomainObject;
 
 import java.util.Set;
 

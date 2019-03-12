@@ -1,9 +1,9 @@
-package com.example.demo.Controller;
+package com.messager.Controller;
 
-import com.example.demo.Entity.Data;
-import com.example.demo.Service.DataService;
-import com.example.demo.Utils.Ajax;
-import com.example.demo.Utils.RestException;
+import com.messager.Entity.Data;
+import com.messager.Service.DataService;
+import com.messager.Utils.Ajax;
+import com.messager.Utils.RestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,8 @@ public class DataController extends ExceptionHandlerController {
 
     @RequestMapping(value = "/persist", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, Object> persist(@RequestParam("data") String data) throws RestException {
+    Map<String, Object> persist(@RequestParam("data") String data) throws RestException
+    {
         try {
             if (data == null || data.equals("")) {
                 return Ajax.emptyResponse();

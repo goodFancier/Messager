@@ -1,4 +1,4 @@
-package com.example.demo.Entity;
+package com.messager.Entity;
 
 import java.io.Serializable;
 

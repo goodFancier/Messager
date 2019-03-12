@@ -1,10 +1,5 @@
-package com.example.demo.Entity;
+package com.messager.Entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class Data implements DomainObject {
 
     private String id;

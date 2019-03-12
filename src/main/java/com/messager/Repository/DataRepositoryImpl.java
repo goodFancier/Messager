@@ -1,11 +1,10 @@
-package com.example.demo.Repository;
+package com.messager.Repository;
 
-import com.example.demo.Entity.Data;
+import com.messager.Entity.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import java.sql.Types;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,12 +31,10 @@ public class DataRepositoryImpl implements DataRepository<Data> {
     @Override
     public Set<String> getRandomData() {
         Set<String> result = new HashSet<>();
-        SqlRowSet rowSet = jdbcOperations.queryForRowSet("SELECT * FROM stocks;");
+        SqlRowSet rowSet = jdbcOperations.queryForRowSet("SELECT * FROM users;");
         while (rowSet.next()) {
             result.add(rowSet.toString());
         }
         return result;
     }
-
-
 }

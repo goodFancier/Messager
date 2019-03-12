@@ -1,6 +1,6 @@
-package com.example.demo.config;
+package com.messager.config;
 
-import com.example.demo.DemoApplication;
+import com.messager.Messager;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +20,7 @@ import java.util.Properties;
 @Configuration
 @EnableAutoConfiguration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses = DemoApplication.class)
+@EnableJpaRepositories(basePackageClasses = Messager.class)
 public class JpaConfig implements TransactionManagementConfigurer {
 
     @Value("${dataSource.driverClassName}")
