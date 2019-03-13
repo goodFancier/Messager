@@ -13,12 +13,30 @@ html{
     height: 100%;
 }
 
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #4041A6;
+}
+
+.navbar a{
+    color: hsla(0,0%,100%,.7);
+}
+
+.top-nav-active {
+    color: #fff
+}
+
+.navbar-auth-buttons{
+    float: right;
+}
+
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
     color: white;
     text-align: center;
 }
