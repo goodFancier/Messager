@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Главная</title>
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="http://api.stackexchange.com/" class="navbar-brand">Messager</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="active top-nav-active"><a href="../pages/index.html">Новости</a></li>
+            </ul>
+        </div>
+        <div class="navbar-auth-buttons">
+            <button type="button" style="margin-right: 5px" class="btn btn-default"><span>Войти</span></button>
+            <button type="button" class="btn btn-default"><span>Регистрация</span></button>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="container-fluid">
+        <h2>Поисковик StackExchange</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-6">
+                        <input type="email" class="form-control" id="title" name="title"
+                               placeholder="Введите текст запроса" style="max-width: 400px">
+                    </div>
+                    <div class="col-md-8 col-sm-6 col-xs-6">
+                        <input type="submit" class="btn btn-primary" onclick="getRest()" value="Отправить"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6"></div>
+        </div>
+        <br>
+        <div class="row" id="log"></div>
+        <br>
+        <div class="table-responsive" id="result"></div>
+
+    </div>
+</div>
+<script src="../resources/bootstrap/js/bootstrap.min.js"/>
+<script src="../resources/bootstrap/js/bootstrap.js"/>
+<script src="../resources/bootstrap/js/npm.js"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+</body>
+
+<footer>goodFancier</footer>
+
+</html>
