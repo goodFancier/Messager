@@ -1,35 +1,71 @@
-th{
+th {
     background: #03A9F4;
     border: solid 1px !Important;
     font-family: cursive;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-html{
+html {
     background: #b5b5b5;
     height: 100%;
 }
 
+body {
+    font-family: "Roboto-Light", sans-serif !important;
+    font-size: 1em;
+    font-size: 1em;
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url(fonts);
+    font-weight: normal;
+    font-style: normal
+}
+
 .navbar {
-    position: fixed;
+    overflow: hidden;
     top: 0;
     width: 100%;
+    position: fixed;
     background-color: #4041A6;
 }
 
-.navbar a{
-    color: hsla(0,0%,100%,.7);
+.navbar a {
+    color: hsla(0, 0%, 100%, .7);
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
 .top-nav-active {
     color: #fff
 }
 
-.navbar-auth-buttons{
+.navbar-auth-buttons {
     float: right;
+    margin-top: 10px;
+}
+
+.navbar-auth-buttons button:hover {
+    background: #4055A6;
+}
+
+.navbar-auth-buttons button {
+    background: #4041A6;
+    border: none;
+}
+
+.navbar-auth-buttons button span {
+    text-align: center;
+    color: #fff;
 }
 
 footer {
