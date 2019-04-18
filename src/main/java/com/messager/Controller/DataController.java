@@ -2,6 +2,7 @@ package com.messager.Controller;
 
 import com.messager.Entity.Data;
 import com.messager.Service.DataService;
+import com.messager.Service.UserDataService;
 import com.messager.Utils.Ajax;
 import com.messager.Utils.RestException;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class DataController extends ExceptionHandlerController {
     @Autowired
     @Qualifier("dataService")
     private DataService dataService;
+
+    @Autowired
+    UserDataService userDataService;
 
     private List<Data> dataList = new ArrayList<>();
 
