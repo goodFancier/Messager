@@ -1,8 +1,8 @@
 package com.messager.config;
 
-import com.messager.Security.JwtAuthenticationEntryPoint;
-import com.messager.Security.JwtAuthenticationFilter;
 import com.messager.Service.UserDataService;
+import com.messager.security.JwtAuthenticationEntryPoint;
+import com.messager.security.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

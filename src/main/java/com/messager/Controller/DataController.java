@@ -22,6 +22,7 @@ import java.util.Set;
 
 
 @Controller
+@RequestMapping("/")
 public class DataController extends ExceptionHandlerController {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataController.class);
@@ -35,7 +36,7 @@ public class DataController extends ExceptionHandlerController {
 
     private List<Data> dataList = new ArrayList<>();
 
-    @RequestMapping(value = "/persist", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> persist(@RequestParam("data") String data) throws RestException
     {
@@ -50,7 +51,7 @@ public class DataController extends ExceptionHandlerController {
         }
     }
 
-    @RequestMapping(value = "/getRandomData", method = RequestMethod.GET)
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Object> getRandomData() throws RestException {
         try {
