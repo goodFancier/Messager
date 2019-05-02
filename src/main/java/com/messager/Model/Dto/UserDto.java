@@ -9,100 +9,100 @@ import javax.persistence.*;
 @Table(name = "users")
 public class UserDto extends ORMDto
 {
-		/**
-		 * Логин пользователя
-		 */
-		@Column(name = "UserName")
-		private String userName;
+    /**
+     * Логин пользователя
+     */
+    @Column(name = "UserName")
+    private String userName;
 
-		/**
-		 * Хеш пароля пользователя
-		 */
-		@Column(name = "Password")
-		private String password;
+    /**
+     * Хеш пароля пользователя
+     */
+    @Column(name = "Password")
+    private String password;
 
-		/**
-		 * Имя пользователя
-		 */
-		@Column(name = "FirstName")
-		private String firstName;
+    /**
+     * Имя пользователя
+     */
+    @Column(name = "FirstName")
+    private String firstName;
 
-		/**
-		 * Фамилия пользователя
-		 */
-		@Column(name = "LastName")
-		private String lastName;
+    /**
+     * Фамилия пользователя
+     */
+    @Column(name = "LastName")
+    private String lastName;
 
-		/**
-		 * E-mail пользователя
-		 */
-		@Column(name = "Email")
-		private String email;
+    /**
+     * E-mail пользователя
+     */
+    @Column(name = "Email")
+    private String email;
 
-		/**
-		 * Наименование группы, в которой состоит пользователей
-		 */
-		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "UserGroup")
-		private UserGroupEnum userGroup;
+    /**
+     * Наименование группы, в которой состоит пользователей
+     */
+    @Column(name = "UserGroup", columnDefinition = "enum('User', 'Admin')")
+    @Enumerated(EnumType.STRING)
+    private UserGroupEnum userGroup;
 
-		public String getEmail()
-		{
-				return email;
-		}
+    public String getEmail()
+    {
+        return email;
+    }
 
-		public void setEmail(String email)
-		{
-				this.email = email;
-		}
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
-		public String getPassword()
-		{
-				return password;
-		}
+    public String getPassword()
+    {
+        return password;
+    }
 
-		public void setPassword(String password)
-		{
-				this.password = password;
-		}
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
 
-		public String getFirstName()
-		{
-				return firstName;
-		}
+    public String getFirstName()
+    {
+        return firstName;
+    }
 
-		public void setFirstName(String firstName)
-		{
-				this.firstName = firstName;
-		}
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
 
-		public String getLastName()
-		{
-				return lastName;
-		}
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-		public void setLastName(String lastName)
-		{
-				this.lastName = lastName;
-		}
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-		public String getUserName()
-		{
-				return userName;
-		}
+    public String getUserName()
+    {
+        return userName;
+    }
 
-		public void setUserName(String userName)
-		{
-				this.userName = userName;
-		}
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
 
-		public UserGroupEnum getUserGroup()
-		{
-				return userGroup;
-		}
+    public UserGroupEnum getUserGroup()
+    {
+        return userGroup;
+    }
 
-		public void setUserGroup(UserGroupEnum userGroup)
-		{
-				this.userGroup = userGroup;
-		}
+    public void setUserGroup(UserGroupEnum userGroup)
+    {
+        this.userGroup = userGroup;
+    }
 }
