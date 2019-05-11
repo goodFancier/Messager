@@ -21,7 +21,8 @@ import java.util.Properties;
 @EnableAutoConfiguration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Messager.class)
-public class JpaConfig implements TransactionManagementConfigurer {
+public class JpaConfig implements TransactionManagementConfigurer
+{
 
     @Value("${dataSource.driverClassName}")
     private String driver;
@@ -37,7 +38,8 @@ public class JpaConfig implements TransactionManagementConfigurer {
     private String hbm2ddlAuto;
 
     @Bean
-    public HikariDataSource configureDataSource() {
+    public HikariDataSource configureDataSource()
+    {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName(driver);
         config.setJdbcUrl(url);
@@ -47,11 +49,12 @@ public class JpaConfig implements TransactionManagementConfigurer {
         return new HikariDataSource(config);
     }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {
+    @Bean(name = "entityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory()
+    {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(configureDataSource());
-        entityManagerFactoryBean.setPackagesToScan("com.example");
+        entityManagerFactoryBean.setPackagesToScan("com.messager");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
@@ -62,9 +65,9 @@ public class JpaConfig implements TransactionManagementConfigurer {
         return entityManagerFactoryBean;
     }
 
-    @Bean
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager annotationDrivenTransactionManager()
+    {
         return new JpaTransactionManager();
     }
-
 }

@@ -68,6 +68,12 @@
             <artifactId>HikariCP</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>2.5</version>
+        </dependency>
+
         <!-- For Java 8 Date/Time Support -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
