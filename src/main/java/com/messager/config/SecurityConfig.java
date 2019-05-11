@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     UserDataService userDataService()
     {
-       return new UserDataService();
+        return new UserDataService();
     }
 
     @Bean
@@ -69,8 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-        //http.cors
-        http
+        http.cors().and()
                 .csrf()
                 .disable()
                 .exceptionHandling()
