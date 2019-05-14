@@ -56,12 +56,10 @@ public class JpaConfig implements TransactionManagementConfigurer
         entityManagerFactoryBean.setDataSource(configureDataSource());
         entityManagerFactoryBean.setPackagesToScan("com.messager");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-
         Properties jpaProperties = new Properties();
         jpaProperties.put(org.hibernate.cfg.Environment.DIALECT, dialect);
         jpaProperties.put(org.hibernate.cfg.Environment.HBM2DDL_AUTO, hbm2ddlAuto);
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
-
         return entityManagerFactoryBean;
     }
 

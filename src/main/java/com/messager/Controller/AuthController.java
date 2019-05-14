@@ -6,10 +6,12 @@ import com.messager.Model.User;
 import com.messager.Repository.RoleRepository;
 import com.messager.Repository.UserRepository;
 import com.messager.exception.AppException;
+import com.messager.exception.ResourceNotFoundException;
 import com.messager.payload.ApiResponse;
 import com.messager.payload.JwtAuthenticationResponse;
 import com.messager.payload.LoginRequest;
 import com.messager.payload.SignUpRequest;
+import com.messager.security.CustomUserDetailsService;
 import com.messager.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,25 +20,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.Collections;
 
-/**
- * Created by rajeevkumarsingh on 02/08/17.
- */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController
 {
-
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -52,30 +49,32 @@ public class AuthController
     @Autowired
     JwtTokenProvider tokenProvider;
 
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
-        /*Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getUsernameOrEmail(),
-                        loginRequest.getPassword()
-                )
-        );
-
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest)
+    {
+        User user = userRepository.findByUsernameOrEmailAndPassword(loginRequest.getUsernameOrEmail(), loginRequest.getUsernameOrEmail(), loginRequest.getPassword())
+                .orElseThrow(() -> new ResourceNotFoundException("User", "username", loginRequest.getUsernameOrEmail()));
+        UserDetails userDetails = customUserDetailsService.loadUserById(user.getId());
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
-*/
- //       String jwt = tokenProvider.generateToken(authentication);
-        return ResponseEntity.ok(new JwtAuthenticationResponse("ASdASDA"));
+        String jwt = tokenProvider.generateToken(user);
+        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest)
+    {
+        if (userRepository.existsByUsername(signUpRequest.getUsername()))
+        {
             return new ResponseEntity(new ApiResponse(false, "Username is already taken!"),
                     HttpStatus.BAD_REQUEST);
         }
 
-        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
+        if (userRepository.existsByEmail(signUpRequest.getEmail()))
+        {
             return new ResponseEntity(new ApiResponse(false, "Email Address already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
