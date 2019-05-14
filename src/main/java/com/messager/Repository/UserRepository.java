@@ -4,15 +4,14 @@ package com.messager.Repository;
 import com.messager.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by rajeevkumarsingh on 02/08/17.
- */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>
 {
@@ -27,4 +26,6 @@ public interface UserRepository extends JpaRepository<User, Long>
     Boolean existsByUsername(String username);
 
     Boolean existsByEmail(String email);
+
+    Optional<User> findByUsernameOrEmailAndPassword(String userName, String email, String password);
 }
