@@ -2,6 +2,7 @@ package com.messager.Controller;
 
 import com.messager.Entity.Data;
 import com.messager.Service.DataService;
+import com.messager.Service.UserDataService;
 import com.messager.Utils.Ajax;
 import com.messager.Utils.RestException;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 
 @Controller
+@RequestMapping("/")
 public class DataController extends ExceptionHandlerController {
 
     private static final Logger LOG = LoggerFactory.getLogger(DataController.class);
@@ -29,9 +31,12 @@ public class DataController extends ExceptionHandlerController {
     @Qualifier("dataService")
     private DataService dataService;
 
+    @Autowired
+    UserDataService userDataService;
+
     private List<Data> dataList = new ArrayList<>();
 
-    @RequestMapping(value = "/persist", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> persist(@RequestParam("data") String data) throws RestException
     {
@@ -46,7 +51,7 @@ public class DataController extends ExceptionHandlerController {
         }
     }
 
-    @RequestMapping(value = "/getRandomData", method = RequestMethod.GET)
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Object> getRandomData() throws RestException {
         try {
